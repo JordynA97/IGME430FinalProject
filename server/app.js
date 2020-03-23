@@ -29,7 +29,7 @@ mongoose.connect(dbURL, mongooseOptions, (err) => {
 const router = require('./router.js');
 
 const app = express();
-app.use('./assets', express.static(path.resolve(`${__dirname}/../hosted/`)));
+app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`)));
 app.use(favicon(`${__dirname}/../hosted/img/favicon.png`));
 app.use(compression());
 app.use(bodyParser.urlencoded({
