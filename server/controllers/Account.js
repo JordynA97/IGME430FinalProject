@@ -30,7 +30,7 @@ const login = (request, response) => {
             return res.status(401).json({ error:'Wrong username or password' });
         }
 
-        req.session.account = Account.AccountModel.toAPI(account);
+        //req.session.account = Account.AccountModel.toAPI(account);
 
         return res.json({ redirect: '/maker' });
     });
@@ -63,8 +63,8 @@ const signup = (request, response) => {
         const savePromise = newAccount.save();
 
         savePromise.then(() => {
-           req.session.account = Account.AccountModel.toAPI(newAccount);
-            return res.json({ redirect: '/maker' });
+            req.session.account = Account.AccountModel.toAPI(newAccount);
+            res.json({ redirect: '/maker' });
         });
 
         savePromise.catch((err) => {
