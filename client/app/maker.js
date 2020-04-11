@@ -47,7 +47,8 @@ const GameList = function(props) {
         return (
             <div key={game._id} className="game">
                 <h3 className="gameName"> Name: {game.name} </h3>
-                <h3 className="gameStatus"> Age: {game.age} </h3>
+                <h3 className="gameStatus"> Status: {game.status} </h3>
+                <h3 className="gameRating"> Rating: {game.rating} </h3>
             </div>
         );
     });
@@ -59,7 +60,7 @@ const GameList = function(props) {
     );
 };
 
-const loadGameFromServer = () => {
+const loadGamesFromServer = () => {
     sendAjax('GET', '/getGames', null, (data) => {
         ReactDOM.render(
             <GameList games={data.games} />, 

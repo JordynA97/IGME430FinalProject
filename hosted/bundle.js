@@ -1,103 +1,113 @@
 "use strict";
 
-var handleDomo = function handleDomo(e) {
+var handleGame = function handleGame(e) {
   e.preventDefault();
-  $("#domoMessage").animate({
+  $("#gameMessage").animate({
     width: 'hide'
   }, 350);
 
-  if ($("#domoName").val() == '' || $("#domoAge").val() == '') {
-    handleError("RAWR: All fields are required");
+  if ($("#gameName").val() == '' || $("#gameStatus").val() == '' || $("#gameRating").val() == '') {
+    handleError("Make sure all fields are filled!");
     return false;
   }
 
-  sendAjax('POST', $("#domoForm").attr("action"), $("#domoForm").serialize(), function () {
-    loadDomosFromServer();
+  sendAjax('POST', $("#gameForm").attr("action"), $("#gameForm").serialize(), function () {
+    loadGamesFromServer();
   });
   return false;
 };
 
-var DomoForm = function DomoForm(props) {
+var GameForm = function GameForm(props) {
   return (/*#__PURE__*/React.createElement("form", {
-      id: "domoForm",
-      onSubmit: handleDomo,
-      name: "domoForm",
-      action: "/maker",
+      id: "gameForm",
+      onSubmit: handleGame,
+      name: "gameForm",
+      action: "/library",
       method: "POST",
-      className: "domoForm"
+      className: "gameForm"
     }, /*#__PURE__*/React.createElement("label", {
       htmlFor: "name"
     }, "Name: "), /*#__PURE__*/React.createElement("input", {
-      id: "domoName",
+      id: "gameName",
       type: "text",
       name: "name",
-      placeholder: "Domo Name"
+      placeholder: "Game Name"
     }), /*#__PURE__*/React.createElement("label", {
-      htmlFor: "age"
-    }, "Age: "), /*#__PURE__*/React.createElement("input", {
-      id: "domoAge",
+      htmlFor: "status"
+    }, "Status: "), /*#__PURE__*/React.createElement("input", {
+      id: "gameStatus",
       type: "text",
-      name: "age",
-      placeholder: "Domo Age"
+      name: "status",
+      placeholder: "Game Status"
+    }), /*#__PURE__*/React.createElement("label", {
+      htmlFor: "rating"
+    }, "Rating: "), /*#__PURE__*/React.createElement("input", {
+      id: "gameRating",
+      type: "text",
+      name: "rating",
+      placeholder: "Game Rating"
     }), /*#__PURE__*/React.createElement("input", {
       type: "hidden",
       name: "_csrf",
       value: props.csrf
     }), /*#__PURE__*/React.createElement("input", {
-      className: "makeDomoSubmit",
+      className: "makeGameSubmit",
       type: "submit",
-      value: "Make Domo"
+      value: "Make Game"
     }))
   );
 };
 
-var DomoList = function DomoList(props) {
-  if (props.domos.length === 0) {
+var GameList = function GameList(props) {
+  if (props.games.length === 0) {
     return (/*#__PURE__*/React.createElement("div", {
-        className: "domoList"
+        className: "gameList"
       }, /*#__PURE__*/React.createElement("h3", {
-        className: "emptyDomo"
-      }, "No Domos Yet"))
+        className: "emptyGame"
+      }, "No Games Yet!"))
     );
   }
 
-  var domoNodes = props.domos.map(function (domo) {
+  if (!game.rating) {
+    document.querySelector("#gamerating").innerHTML = "Not Recorded Yet";
+  }
+
+  var gameNodes = props.games.map(function (game) {
     return (/*#__PURE__*/React.createElement("div", {
-        key: domo._id,
-        className: "domo"
-      }, /*#__PURE__*/React.createElement("img", {
-        src: "/assets/img/domoface.jpeg",
-        alt: "domo face",
-        className: "domoFace"
-      }), /*#__PURE__*/React.createElement("h3", {
-        className: "domoName"
-      }, " Name: ", domo.name, " "), /*#__PURE__*/React.createElement("h3", {
-        className: "domoAge"
-      }, " Age: ", domo.age, " "))
+        key: game._id,
+        className: "game"
+      }, /*#__PURE__*/React.createElement("h3", {
+        className: "gameName"
+      }, " Name: ", game.name, " "), /*#__PURE__*/React.createElement("h3", {
+        className: "gameStatus"
+      }, " Status: ", game.status, " "), /*#__PURE__*/React.createElement("h3", {
+        className: "gameRating",
+        id: "gamerating"
+      }, " Rating: ", game.rating, " "))
     );
   });
   return (/*#__PURE__*/React.createElement("div", {
-      className: "domoList"
-    }, domoNodes)
+      className: "gameList"
+    }, gameNodes)
   );
 };
 
-var loadDomosFromServer = function loadDomosFromServer() {
-  sendAjax('GET', '/getDomos', null, function (data) {
-    ReactDOM.render( /*#__PURE__*/React.createElement(DomoList, {
-      domos: data.domos
-    }), document.querySelector("#domos"));
+var loadGamesFromServer = function loadGamesFromServer() {
+  sendAjax('GET', '/getGames', null, function (data) {
+    ReactDOM.render( /*#__PURE__*/React.createElement(GameList, {
+      games: data.games
+    }), document.querySelector("#games"));
   });
 };
 
 var setup = function setup(csrf) {
-  ReactDOM.render( /*#__PURE__*/React.createElement(DomoForm, {
+  ReactDOM.render( /*#__PURE__*/React.createElement(GameForm, {
     csrf: csrf
-  }), document.querySelector("#makeDomo"));
-  ReactDOM.render( /*#__PURE__*/React.createElement(DomoList, {
-    domos: []
-  }), document.querySelector("#domos"));
-  loadDomosFromServer();
+  }), document.querySelector("#makeGame"));
+  ReactDOM.render( /*#__PURE__*/React.createElement(GameList, {
+    games: []
+  }), document.querySelector("#games"));
+  loadGamesFromServer();
 };
 
 var getToken = function getToken() {
@@ -113,13 +123,13 @@ $(document).ready(function () {
 
 var handleError = function handleError(message) {
   $("#errorMessage").text(message);
-  $("#domoMessage").animate({
+  $("#gameMessage").animate({
     width: 'toggle'
   }, 350);
 };
 
 var redirect = function redirect(response) {
-  $("#domoMessage").animate({
+  $("#gameMessage").animate({
     width: 'hide'
   }, 350);
   window.location = response.redirect;

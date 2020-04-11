@@ -13,8 +13,8 @@ const libraryPage = (req, res) => {
 };
 
 const makeGame = (req, res) => {
-    if (!req.body.name || !req.body.age) {
-        return res.status(400).json({ error: 'RAWR! Both name and age are required' });
+    if (!req.body.name || !req.body.status || !req.body.rating) {
+        return res.status(400).json({ error: 'All fields are required!' });
     }
 
     const gameData = {

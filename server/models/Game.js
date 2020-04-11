@@ -23,7 +23,7 @@ const GameSchema = new mongoose.Schema({
     rating: {
         type: Number,
         min: 0,
-        required: true,
+        required: false,
     },
 
     owner: {
