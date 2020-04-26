@@ -6,6 +6,12 @@ html, body {
     overflow-x: hidden;
     background: black;
     color: white;
+    font-family: 'Abel', sans-serif;
+}
+
+input{
+border-radius: 12px;
+margin-bottom: 5px;
 }
 
 #logo {
@@ -19,7 +25,8 @@ html, body {
 nav {
     width: 100%;
     height: 50px;
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0.45);
+
 }
 
 nav:nth-child(1) {
@@ -40,7 +47,7 @@ nav:nth-child(1) {
     text-decoration: none;
     padding: 5px;
     border-radius: 4px;
-    background-color: grey;
+    background-color: transparent;
     transition: background-color 0.4s ease;
 }
 
@@ -50,12 +57,13 @@ nav:nth-child(1) {
 }
 
 .gameForm {
-    border: 2px solid white;
+    margin-top: 5px;
+    border: none;
     height: 35px;
     width: 100%;
     margin-top:0px;
     padding-top:10px;
-    background-color: grey;
+    background-color: rgba(128, 128, 128, 0.562);
     border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
 }
@@ -71,25 +79,39 @@ nav:nth-child(1) {
 
 .gameForm input[type=text] {
     float:left;
+    font-family: 'Abel', sans-serif;
 }
 
-.makeGameSubmit {
+#logoutButton, #profileButton, #reviewButton, #loginButton, #signupButton{
+    background-color: transparent;
+    border: none;
+    font-family: 'Abel', sans-serif;
+    font-size: 18px;
+    color: white;
+}
+
+#logoutButton :hover, #profileButton :hover, #reviewButton :hover, #loginButton :hover, #signupButton :hover{
+background-color: green;
+}
+
+.makeGameSubmit, .reviewPostSubmit{
     transition: background-color 0.4s ease;
-    display: inline;
-    width: 90px;
-    background-color: grey;
-    border-radius: 2px;
+    width: 150px;
+    margin-left: 10px;
+    margin-top: 2px;
+    background-color: transparent;
     color: white;
     text-decoration: none;
+    border: none;
 }
 
-.makeGameSubmit:link, .makeGameSubmit:visited, .makeGameSubmit:hover, .makeGameSubmit:active {
+.makeGameSubmit:link, .makeGameSubmit:visited, .makeGameSubmit:hover, .makeGameSubmit:active, .reviewPostSubmit:link, .reviewPostSubmit:visited, .reviewPostSubmit:hover, .reviewPostSubmit:active {
     color: white;
 }
 
-.makeGameSubmit:hover {
+.makeGameSubmit:hover, .reviewPostSubmit :hover {
     transition: background-color 0.4s ease;
-    background-color: grey;
+    background-color: darkgreen;
 }
 
 .mainForm {
@@ -120,12 +142,12 @@ nav:nth-child(1) {
     margin-top: 14px;
     font-size: 1.2em;
     width: 100px;
-    background-color: grey;
-    border-radius: 2px;
-    border-color: green;
+    background-color: black;
+    border: none;
     padding: 3px 0px;
     color: white;
     text-decoration: none;
+    font-family: "Abel", sans-serif;
 }
 
 .formSubmit:link, .formSubmit:visited, .formSubmit:hover, .formSubmit:active {
@@ -134,7 +156,7 @@ nav:nth-child(1) {
 
 .formSubmit:hover {
     transition: background-color 0.4s ease;
-    background-color: grey;
+    background-color: darkgreen;
 }
 
 #user, #pass, #pass2 {
@@ -192,32 +214,27 @@ nav:nth-child(1) {
 }
 
 #games {
-    width: 90%;
+    width: 99%;
     min-width: 400px;
-    border: 2px solid grey;
-    border-radius: 4px;
-    margin: 0 auto;
-    margin-top: 100px;
+    border: solid 2px black;
+    margin: 0;
+    margin-left: 5px;
 }
 
 .game {
-    width: 95%;
-    margin: 0 auto;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    border: 2px solid grey;
-    border-radius: 4px;
-    background-color: grey;
-    padding: 10px;
+    width: 99%;
+    margin: 8px;;
+    padding: 0;
     min-height:60px;
     overflow: hidden;
 }
 
 .game:hover {
-    transition: border-color 0.2s ease-out;
-    border-color: rgba(255,255,255, 0.8);
-    transition: background-color 2.6s ease-out;
-    background-color: grey;
+    background-color: rgba(0, 100, 0, 0.548);
+}
+
+.gameList{
+width: 100%;
 }
 
 img.gameFace {

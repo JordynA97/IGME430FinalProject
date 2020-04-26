@@ -38,7 +38,7 @@ const GameList = function(props) {
     if(props.games.length === 0){
         return (
             <div className="gameList">
-                <h3 className="emptyGame">No Games Yet!</h3>
+                <h3 className="emptyGame">No Games Yet</h3>
             </div>
         );
     }

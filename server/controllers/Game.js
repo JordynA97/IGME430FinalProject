@@ -56,6 +56,13 @@ const getGames = (request, response) => {
     });
 };
 
+// const getPosts = (request, response) => {
+//     const req = request;
+//     const res = response;
+
+//     return res.json({ reviews: reviews });
+// };
+
 module.exports.libraryPage = libraryPage;
 module.exports.getGames = getGames;
 module.exports.make = makeGame;

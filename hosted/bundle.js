@@ -64,12 +64,8 @@ var GameList = function GameList(props) {
         className: "gameList"
       }, /*#__PURE__*/React.createElement("h3", {
         className: "emptyGame"
-      }, "No Games Yet!"))
+      }, "No Games Yet"))
     );
-  }
-
-  if (!game.rating) {
-    document.querySelector("#gamerating").innerHTML = "Not Recorded Yet";
   }
 
   var gameNodes = props.games.map(function (game) {
@@ -81,8 +77,7 @@ var GameList = function GameList(props) {
       }, " Name: ", game.name, " "), /*#__PURE__*/React.createElement("h3", {
         className: "gameStatus"
       }, " Status: ", game.status, " "), /*#__PURE__*/React.createElement("h3", {
-        className: "gameRating",
-        id: "gamerating"
+        className: "gameRating"
       }, " Rating: ", game.rating, " "))
     );
   });

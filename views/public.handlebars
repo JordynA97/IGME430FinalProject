@@ -12,19 +12,15 @@
   <link rel="shortcut icon" href="/assets/img/favicon.png"/>
   <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
 </head>
-<body>
+<body>  
   <nav><a href="/login"><img id="logo" src="/assets/img/logo.png" alt="logo"/></a>
     <button id="logoutButton"><div class="navlink"><a href="/logout">Log out</a></div></button>
     <button id="profileButton"><div class="navlink"><a href="/profile">View Profile</a></div></button>
-    <button id="reviewButton"><div class="navlink"><a href="/public">Public Reviews</a></div></button>
   </nav>
-  <section id="makeGame">
-  </section>
-  <section id="games">
-  </section>
-  <div id="gameMessage"><img id="speech" src="/assets/img/speech.png" alt="speech box"/>
-    <h3><span id="errorMessage"></span></h3>
-  </div>
-  <script src="/assets/bundle.js"></script>
+  <h1>Public Posts and Reviews</h1>
+  <section id="reviewPost"></section>
+  <section id="reviewList"></section>
+  <script src="/assets/publicBundle.js"></script>
+
 </body>
 </html>

@@ -4,6 +4,14 @@ const Account = models.Account;
 const loginPage = (req, res) => {
     res.render('login', { csrfToken: req.csrfToken() });
 };
+
+const profilePage = (req, res) => {
+    res.render('profile', { username: req.session.account.username, csrfToken: req.csrfToken() });
+}
+
+const publicPage = (req, res) => {
+    res.render('public', { csrfToken: req.csrfToken() });
+}
   
 const logout = (req, res) => {
     req.session.destroy();
@@ -87,6 +95,8 @@ const getToken = (request, response) => {
 };
 
 module.exports.loginPage = loginPage;
+module.exports.profilePage = profilePage;
+module.exports.publicPage = publicPage;
 module.exports.login = login;
 module.exports.logout = logout;
 module.exports.signup = signup;

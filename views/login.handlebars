@@ -2,6 +2,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>GameLibrary</title>
+  <link href="https://fonts.googleapis.com/css2?family=Abel&display=swap" rel="stylesheet">
   <script crossorigin src="https://unpkg.com/react@15/dist/react.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
   <script crossorigin src="https://unpkg.com/prop-types/prop-types.min.js"></script>
@@ -13,12 +14,12 @@
 </head>
 <body> 
   <nav><a href="/login"><img id="logo" src="/assets/img/logo.png" alt="face logo"/></a>
-    <div class="navlink"><a id="loginButton" href="/login">Login</a></div>
-    <div class="navlink"><a id="signupButton" href="/signup">Sign up</a></div>
+    <button id="loginButton"><div class="navlink"><a id="loginButton" href="/login">Login</a></div></button>
+    <button id="signupButton"><div class="navlink"><a id="signupButton" href="/signup">Sign up</a></div></button>
   </nav>
   <section id="content"></section>
   <div id="gameMessage"><img id="speech" src="/assets/img/speech.png" alt="speech box"/>
-    <h3><span id="errorMessage">Wrong username or password</span></h3><img id="game" src="assets/img/game.png" alt="game"/>
+    <h3><span id="errorMessage">Wrong username or password</span></h3>
   </div>
   <script src="/assets/loginBundle.js"></script>
 </body>
