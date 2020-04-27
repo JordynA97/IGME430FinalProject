@@ -69,9 +69,15 @@ const reviewPage = (request, response) => {
         }
 
         let filteredDocs = [];
-        for (let d of docs) {
-            if (d.review) {
-                filteredDocs.push(d);
+        // for (let d of docs) {
+        //     if (d.review) {
+        //         filteredDocs.push(d);
+        //     }
+        // }
+
+        for(let i = 0; i < docs.lengths; i++) {
+            if (docs[i].review) {
+                filteredDocs.push(docs[i]);
             }
         }
 
