@@ -66,7 +66,7 @@ var LoginWindow = function LoginWindow(props) {
       className: "formSubmit",
       type: "submit",
       value: "Sign in"
-    }), /*#__PURE__*/React.createElement("p", null), /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("center", null, "Dont have an account? signup!")))
+    }), /*#__PURE__*/React.createElement("p", null), /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("center", null, "Dont have an account? Sign up!")))
   );
 };
 

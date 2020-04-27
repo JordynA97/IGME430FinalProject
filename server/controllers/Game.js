@@ -1,6 +1,5 @@
 const models = require('../models');
 const Game = models.Game;
-const Account = models.Account;
 
 //game library page
 const libraryPage = (req, res) => {
@@ -80,6 +79,7 @@ const reviewPage = (request, response) => {
     });
 }
 
+//redirect
 const pageNotFound = (req, res) => {
     res.redirect('/');
 }
