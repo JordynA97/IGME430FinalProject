@@ -1,17 +1,21 @@
 const models = require('../models');
 const Game = models.Game;
+const Account = models.Account;
 
+//game library page
 const libraryPage = (req, res) => {
+
     Game.GameModel.findByOwner(req.session.account._id, (err, docs) => {
         if(err) {
             console.log(err);
             return res.status(400).json({ error: 'An error occured' });
         }
 
-        return res.render('app', { csrfToken: req.csrfToken(), games: docs });
+        return res.render('app', { csrfToken: req.csrfToken(), games: docs, premium: req.session.account.premium });
     });
 };
 
+//post new game
 const makeGame = (req, res) => {
     if (!req.body.name || !req.body.status || !req.body.rating || !req.body.review) {
         return res.status(400).json({ error: 'All fields are required!' });
@@ -43,6 +47,7 @@ const makeGame = (req, res) => {
     return gamePromise;
 }
 
+//get games for user
 const getGames = (request, response) => {
     const req = request;
     const res = response;
@@ -57,6 +62,7 @@ const getGames = (request, response) => {
     });
 };
 
+//shows all reviews
 const reviewPage = (request, response) => {
     Game.GameModel.findAll((err, docs) => {
         if(err){

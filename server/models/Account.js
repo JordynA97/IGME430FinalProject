@@ -16,24 +16,33 @@ const AccountSchema = new mongoose.Schema({
     unique: true,
     match: /^[A-Za-z0-9_\-.]{1,16}$/,
   },
+  
   salt: {
     type: Buffer,
     required: true,
   },
+
   password: {
     type: String,
     required: true,
   },
+
   createdDate: {
     type: Date,
     default: Date.now,
   },
+
+  premium: {
+    type: Boolean,
+    default: false,
+  }
 });
 
 AccountSchema.statics.toAPI = (doc) => ({
   // _id is built into your mongo document and is guaranteed to be unique
   username: doc.username,
   _id: doc._id,
+  premium: doc.premium
 });
 
 const validatePassword = (doc, password, callback) => {

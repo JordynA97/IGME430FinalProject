@@ -1,11 +1,26 @@
 "use strict";
 
+//create the profile page
 var UserProfilePage = function UserProfilePage(props) {
   return (/*#__PURE__*/React.createElement("div", {
       id: "userProfile"
-    }, /*#__PURE__*/React.createElement("p", null, "Username: ", props.username))
+    }, /*#__PURE__*/React.createElement("h2", null, "Username: ", props.username), /*#__PURE__*/React.createElement("h2", {
+      id: "sub"
+    }, "Subscription: Basic"), /*#__PURE__*/React.createElement("h2", null, "Don't want Ads?", /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("button", {
+      type: "submit",
+      className: "profileButtons",
+      onClick: function onClick(e) {
+        e.preventDefault();
+        document.getElementById("sub").innerHTML = "Subscripton: Premium";
+      }
+    }, "Upgrade to Premium"))), /*#__PURE__*/React.createElement("h2", null, /*#__PURE__*/React.createElement("button", {
+      className: "profileButtons"
+    }, /*#__PURE__*/React.createElement("a", {
+      href: "/password"
+    }, "Change Password"))))
   );
-};
+}; //place in profile.handlebars
+
 
 var setup = function setup() {
   var username = document.querySelector("#userProfilePage").dataset.username;

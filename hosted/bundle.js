@@ -15,7 +15,8 @@ var handleGame = function handleGame(e) {
     loadGamesFromServer();
   });
   return false;
-};
+}; //make form for games
+
 
 var GameForm = function GameForm(props) {
   return (/*#__PURE__*/React.createElement("form", {
@@ -25,6 +26,8 @@ var GameForm = function GameForm(props) {
       action: "/library",
       method: "POST",
       className: "gameForm"
+    }, /*#__PURE__*/React.createElement("div", {
+      className: "gameField"
     }, /*#__PURE__*/React.createElement("label", {
       htmlFor: "name"
     }, "Name: "), /*#__PURE__*/React.createElement("input", {
@@ -32,14 +35,19 @@ var GameForm = function GameForm(props) {
       type: "text",
       name: "name",
       placeholder: "Game Name"
-    }), /*#__PURE__*/React.createElement("label", {
+    })), /*#__PURE__*/React.createElement("div", {
+      className: "gameField"
+    }, /*#__PURE__*/React.createElement("label", {
       htmlFor: "status"
-    }, "Status: "), /*#__PURE__*/React.createElement("select", {
+    }, "Status:"), /*#__PURE__*/React.createElement("select", {
       id: "gameStatus",
-      name: "status"
+      name: "status",
+      placeholder: "Game Status"
     }, /*#__PURE__*/React.createElement("option", {
       selected: true
-    }, "Want to Play"), /*#__PURE__*/React.createElement("option", null, "Playing"), /*#__PURE__*/React.createElement("option", null, "Completed")), /*#__PURE__*/React.createElement("label", {
+    }, "Want to Play"), /*#__PURE__*/React.createElement("option", null, "Playing"), /*#__PURE__*/React.createElement("option", null, "Completed"))), /*#__PURE__*/React.createElement("div", {
+      className: "gameField"
+    }, /*#__PURE__*/React.createElement("label", {
       htmlFor: "rating"
     }, "Rating: (out of 5) "), /*#__PURE__*/React.createElement("select", {
       id: "gameRating",
@@ -47,14 +55,16 @@ var GameForm = function GameForm(props) {
       placeholder: "Game Rating"
     }, /*#__PURE__*/React.createElement("option", {
       selected: true
-    }, "1"), /*#__PURE__*/React.createElement("option", null, "2"), /*#__PURE__*/React.createElement("option", null, "3"), /*#__PURE__*/React.createElement("option", null, "4"), /*#__PURE__*/React.createElement("option", null, "5")), /*#__PURE__*/React.createElement("label", {
+    }, "1"), /*#__PURE__*/React.createElement("option", null, "2"), /*#__PURE__*/React.createElement("option", null, "3"), /*#__PURE__*/React.createElement("option", null, "4"), /*#__PURE__*/React.createElement("option", null, "5"))), /*#__PURE__*/React.createElement("div", {
+      className: "gameField"
+    }, /*#__PURE__*/React.createElement("label", {
       htmlFor: "review"
     }, "Review: "), /*#__PURE__*/React.createElement("input", {
       id: "gameReview",
       type: "text",
       name: "review",
       placeholder: "Game Review"
-    }), /*#__PURE__*/React.createElement("input", {
+    })), /*#__PURE__*/React.createElement("input", {
       type: "hidden",
       name: "_csrf",
       value: props.csrf
@@ -64,7 +74,8 @@ var GameForm = function GameForm(props) {
       value: "Make Game"
     }))
   );
-};
+}; //list of games
+
 
 var GameList = function GameList(props) {
   if (props.games.length === 0) {
@@ -95,7 +106,8 @@ var GameList = function GameList(props) {
       className: "gameList"
     }, gameNodes)
   );
-};
+}; //load all games 
+
 
 var loadGamesFromServer = function loadGamesFromServer() {
   sendAjax('GET', '/getGames', null, function (data) {
@@ -103,7 +115,8 @@ var loadGamesFromServer = function loadGamesFromServer() {
       games: data.games
     }), document.querySelector("#games"));
   });
-};
+}; //fill in section tags in handlebars
+
 
 var setup = function setup(csrf) {
   ReactDOM.render( /*#__PURE__*/React.createElement(GameForm, {

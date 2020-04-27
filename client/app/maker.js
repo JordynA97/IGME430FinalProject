@@ -15,22 +15,28 @@ const handleGame = (e) => {
     return false;
 };
 
+//make form for games
 const GameForm = (props) => {
     return (
         <form id="gameForm" onSubmit={handleGame}
         name="gameForm" action="/library"
         method="POST" className="gameForm">
 
+            <div className="gameField">
             <label htmlFor="name">Name: </label>
             <input id="gameName" type="text" name="name" placeholder="Game Name"/>
+            </div>
 
-            <label htmlFor="status">Status: </label>
-            <select id="gameStatus" name="status">
+            <div className="gameField">
+            <label htmlFor="status">Status:</label>
+            <select id="gameStatus" name="status" placeholder="Game Status">
                 <option selected>Want to Play</option>
                 <option>Playing</option>
                 <option>Completed</option>
             </select>
+            </div>
 
+            <div className="gameField">
             <label htmlFor="rating">Rating: (out of 5) </label>
             <select id="gameRating" name="rating" placeholder="Game Rating">
                 <option selected>1</option>
@@ -39,9 +45,12 @@ const GameForm = (props) => {
                 <option>4</option>
                 <option>5</option>
             </select>
+            </div>
 
+            <div className="gameField">
             <label htmlFor="review">Review: </label>
             <input id="gameReview" type="text" name="review" placeholder="Game Review"/>
+            </div>
             
             <input type="hidden" name="_csrf" value={props.csrf}/>
             <input className="makeGameSubmit" type="submit" value="Make Game"/>
@@ -50,6 +59,7 @@ const GameForm = (props) => {
     );
 };
 
+//list of games
 const GameList = function(props) {
     if(props.games.length === 0){
         return (
@@ -77,6 +87,7 @@ const GameList = function(props) {
     );
 };
 
+//load all games 
 const loadGamesFromServer = () => {
     sendAjax('GET', '/getGames', null, (data) => {
         ReactDOM.render(
@@ -86,6 +97,7 @@ const loadGamesFromServer = () => {
     });
 };
 
+//fill in section tags in handlebars
 const setup = function(csrf){
     ReactDOM.render(
         <GameForm csrf={csrf} />,

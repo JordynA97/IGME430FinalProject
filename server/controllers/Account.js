@@ -5,10 +5,13 @@ const loginPage = (req, res) => {
     res.render('login', { csrfToken: req.csrfToken() });
 };
 
+//set up profile page
 const profilePage = (req, res) => {
-    res.render('profile', { username: req.session.account.username, csrfToken: req.csrfToken() });
+    res.render('profile', { username: req.session.account.username, premium: req.session.account.premium, 
+        csrfToken: req.csrfToken() });
 }
 
+//set up public page
 const publicPage = (req, res) => {
     res.render('public', { csrfToken: req.csrfToken() });
 }
@@ -61,6 +64,7 @@ const signup = (request, response) => {
             username: req.body.username,
             salt,
             password: hash,
+            premium: false,
         };
 
         const newAccount = new Account.AccountModel(accountData);
@@ -83,6 +87,7 @@ const signup = (request, response) => {
     });
 };
 
+//get token
 const getToken = (request, response) => {
     const req = request;
     const res = response;
@@ -94,6 +99,44 @@ const getToken = (request, response) => {
     res.json(csrfJSON);
 };
 
+//update premium to true
+const upgrade = (request, response) => {
+    const req = request;
+    const res = response;
+
+    const updatePromise = Account.AccountModel.updateOne({ _id: req.session.account._id }, { $set:{ premium: true }});
+}
+
+//change password page is displayed
+const passwordPage = (req, res) => res.render('password', {username: req.session.account.username});
+
+const changeUserPass = (request, response) => {
+    const req = request;
+    const res = response;
+
+    //all fields filled
+    if(!req.body.newPass || !req.body.newPass2){
+        return res.status(400).json({ error: 'All fields required' });
+    }
+
+    //passwords must match
+    if(req.body.newPass !== req.body.newPass2){
+        return res.status(400).json({ error: 'Passwords must match'});
+    }
+
+    //create new password for that users account
+    return Account.AccountModel.generateHash(req.body.newPass, (salt, hash) => {
+        const updatePassword = Account.AccountModel.updateOne({ _id: req.session.account._id },
+            {
+                salt,
+                password: hash,
+            });
+
+            //send user back to the library screen
+            updatePassword.then(res.json({ redirect: '/library' }));
+    });
+};
+
 module.exports.loginPage = loginPage;
 module.exports.profilePage = profilePage;
 module.exports.publicPage = publicPage;
@@ -101,3 +144,6 @@ module.exports.login = login;
 module.exports.logout = logout;
 module.exports.signup = signup;
 module.exports.getToken = getToken;
+module.exports.upgrade = upgrade;
+module.exports.passwordPage = passwordPage;
+module.exports.changeUserPass = changeUserPass;
