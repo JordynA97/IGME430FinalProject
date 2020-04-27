@@ -100,7 +100,7 @@ const getToken = (request, response) => {
 };
 
 //update premium to true
-const upgrade = (request, response) => {
+const upgrade = (request) => {
     const req = request;
 
     Account.AccountModel.updateOne({ _id: req.session.account._id }, { $set:{ premium: true }});
