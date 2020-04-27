@@ -59,7 +59,7 @@ nav:nth-child(1) {
 .gameForm {
     margin-top: 5px;
     border: none;
-    height: 35px;
+    height: 8%;
     width: 100%;
     margin-top:0px;
     padding-top:10px;
@@ -103,6 +103,8 @@ background-color: green;
     color: white;
     text-decoration: none;
     border: none;
+    font-family: 'Abel', sans-serif;
+    font-size: 18px;
 }
 
 .makeGameSubmit:link, .makeGameSubmit:visited, .makeGameSubmit:hover, .makeGameSubmit:active, .reviewPostSubmit:link, .reviewPostSubmit:visited, .reviewPostSubmit:hover, .reviewPostSubmit:active {
@@ -281,10 +283,24 @@ h3.gameRating {
     font-size: 1.5em;
 }
 
+h3.gameReview{
+    float:right;
+    text-align: left;
+    width: 100px;
+    font-weight: bold;
+    padding-right: 40px;
+    font-size: 1.5em;
+}
+
 .game:first-child {
     margin-top: 10px;
 }
 
 .game:last-child {
     margin-bottom:10px;
+}
+
+#divider{
+    width: 100%;
+    height: 6%;
 }

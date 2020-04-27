@@ -13,7 +13,7 @@ const libraryPage = (req, res) => {
 };
 
 const makeGame = (req, res) => {
-    if (!req.body.name || !req.body.status || !req.body.rating) {
+    if (!req.body.name || !req.body.status || !req.body.rating || !req.body.review) {
         return res.status(400).json({ error: 'All fields are required!' });
     }
 
@@ -21,6 +21,7 @@ const makeGame = (req, res) => {
         name: req.body.name,
         status: req.body.status,
         rating: req.body.rating,
+        review: req.body.review,
         owner: req.session.account._id,
     };
 
@@ -56,13 +57,24 @@ const getGames = (request, response) => {
     });
 };
 
-// const getPosts = (request, response) => {
-//     const req = request;
-//     const res = response;
+const reviewPage = (request, response) => {
+    Game.GameModel.findAll((err, docs) => {
+        if(err){
+            return response.status(400).json({ error: 'An error occured' });
+        }
 
-//     return res.json({ reviews: reviews });
-// };
+        let filteredDocs = [];
+        for (let d of docs) {
+            if (d.review) {
+                filteredDocs.push(d);
+            }
+        }
+
+        return response.render('public', {games: filteredDocs})
+    });
+}
 
 module.exports.libraryPage = libraryPage;
 module.exports.getGames = getGames;
 module.exports.make = makeGame;
+module.exports.reviewPage = reviewPage;

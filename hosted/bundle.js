@@ -6,7 +6,7 @@ var handleGame = function handleGame(e) {
     width: 'hide'
   }, 350);
 
-  if ($("#gameName").val() == '' || $("#gameStatus").val() == '' || $("#gameRating").val() == '') {
+  if ($("#gameName").val() == '' || $("#gameStatus").val() == '' || $("#gameRating").val() == '' || $("#gameReview").val() == '') {
     handleError("Make sure all fields are filled!");
     return false;
   }
@@ -34,18 +34,26 @@ var GameForm = function GameForm(props) {
       placeholder: "Game Name"
     }), /*#__PURE__*/React.createElement("label", {
       htmlFor: "status"
-    }, "Status: "), /*#__PURE__*/React.createElement("input", {
+    }, "Status: "), /*#__PURE__*/React.createElement("select", {
       id: "gameStatus",
-      type: "text",
-      name: "status",
-      placeholder: "Game Status"
-    }), /*#__PURE__*/React.createElement("label", {
+      name: "status"
+    }, /*#__PURE__*/React.createElement("option", {
+      selected: true
+    }, "Want to Play"), /*#__PURE__*/React.createElement("option", null, "Playing"), /*#__PURE__*/React.createElement("option", null, "Completed")), /*#__PURE__*/React.createElement("label", {
       htmlFor: "rating"
-    }, "Rating: "), /*#__PURE__*/React.createElement("input", {
+    }, "Rating: (out of 5) "), /*#__PURE__*/React.createElement("select", {
       id: "gameRating",
-      type: "text",
       name: "rating",
       placeholder: "Game Rating"
+    }, /*#__PURE__*/React.createElement("option", {
+      selected: true
+    }, "1"), /*#__PURE__*/React.createElement("option", null, "2"), /*#__PURE__*/React.createElement("option", null, "3"), /*#__PURE__*/React.createElement("option", null, "4"), /*#__PURE__*/React.createElement("option", null, "5")), /*#__PURE__*/React.createElement("label", {
+      htmlFor: "review"
+    }, "Review: "), /*#__PURE__*/React.createElement("input", {
+      id: "gameReview",
+      type: "text",
+      name: "review",
+      placeholder: "Game Review"
     }), /*#__PURE__*/React.createElement("input", {
       type: "hidden",
       name: "_csrf",
@@ -78,7 +86,9 @@ var GameList = function GameList(props) {
         className: "gameStatus"
       }, " Status: ", game.status, " "), /*#__PURE__*/React.createElement("h3", {
         className: "gameRating"
-      }, " Rating: ", game.rating, " "))
+      }, " Rating: ", game.rating, " "), /*#__PURE__*/React.createElement("h3", {
+        className: "gameReview"
+      }, " Review: ", game.review, " "))
     );
   });
   return (/*#__PURE__*/React.createElement("div", {

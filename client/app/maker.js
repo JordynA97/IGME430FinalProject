@@ -3,7 +3,7 @@ const handleGame = (e) => {
 
     $("#gameMessage").animate({width:'hide'}, 350);
 
-    if($("#gameName").val() == '' || $("#gameStatus").val() == '' || $("#gameRating").val() == ''){
+    if($("#gameName").val() == '' || $("#gameStatus").val() == '' || $("#gameRating").val() == '' || $("#gameReview").val() == ''){
         handleError("Make sure all fields are filled!");
         return false;
     }
@@ -23,10 +23,26 @@ const GameForm = (props) => {
 
             <label htmlFor="name">Name: </label>
             <input id="gameName" type="text" name="name" placeholder="Game Name"/>
+
             <label htmlFor="status">Status: </label>
-            <input id="gameStatus" type="text" name="status" placeholder="Game Status"/>
-            <label htmlFor="rating">Rating: </label>
-            <input id="gameRating" type="text" name="rating" placeholder="Game Rating"/>
+            <select id="gameStatus" name="status">
+                <option selected>Want to Play</option>
+                <option>Playing</option>
+                <option>Completed</option>
+            </select>
+
+            <label htmlFor="rating">Rating: (out of 5) </label>
+            <select id="gameRating" name="rating" placeholder="Game Rating">
+                <option selected>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+            </select>
+
+            <label htmlFor="review">Review: </label>
+            <input id="gameReview" type="text" name="review" placeholder="Game Review"/>
+            
             <input type="hidden" name="_csrf" value={props.csrf}/>
             <input className="makeGameSubmit" type="submit" value="Make Game"/>
 
@@ -49,6 +65,7 @@ const GameList = function(props) {
                 <h3 className="gameName"> Name: {game.name} </h3>
                 <h3 className="gameStatus"> Status: {game.status} </h3>
                 <h3 className="gameRating"> Rating: {game.rating} </h3>
+                <h3 className="gameReview"> Review: {game.review} </h3>
             </div>
         );
     });

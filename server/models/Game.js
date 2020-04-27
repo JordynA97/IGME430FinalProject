@@ -26,6 +26,11 @@ const GameSchema = new mongoose.Schema({
         required: false,
     },
 
+    review: {
+        type: String,
+        required: false,
+    },
+
     owner: {
         type: mongoose.Schema.ObjectId,
         required: true,
@@ -42,6 +47,7 @@ GameSchema.statics.toAPI = (doc) => ({
     name: doc.name,
     status: doc.status,
     rating: doc.rating,
+    review: doc.review,
 });
 
 GameSchema.statics.findByOwner = (ownerId, callback) => {
@@ -49,8 +55,10 @@ GameSchema.statics.findByOwner = (ownerId, callback) => {
         owner: convertId(ownerId),
     };
 
-    return GameModel.find(search).select('name status rating').lean().exec(callback);
+    return GameModel.find(search).select('name status rating review').lean().exec(callback);
 };
+
+GameSchema.statics.findAll = (callback) => GameModel.find().select('name status rating review').lean().exec(callback);
 
 GameModel = mongoose.model('Game', GameSchema);
 

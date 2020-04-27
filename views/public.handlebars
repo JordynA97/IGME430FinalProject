@@ -18,9 +18,15 @@
     <button id="profileButton"><div class="navlink"><a href="/profile">View Profile</a></div></button>
   </nav>
   <h1>Public Posts and Reviews</h1>
-  <section id="reviewPost"></section>
-  <section id="reviewList"></section>
-  <script src="/assets/publicBundle.js"></script>
 
+  {{#if games}}
+    {{#each games}}
+      <div id='{{this}}'>
+        <h3>Game: {{this.name}}</h3>
+        <h3> Review: {{this.review}}</h3>
+        <img id="divider" src='/assets/img/divider.png'>
+      </div>
+    {{/each}}
+  {{/if}}
 </body>
 </html>
