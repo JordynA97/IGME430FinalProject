@@ -44,7 +44,7 @@ var LoginWindow = function LoginWindow(props) {
       action: "/login",
       method: "POST",
       className: "mainForm"
-    }, /*#__PURE__*/React.createElement("label", {
+    }, /*#__PURE__*/React.createElement("h1", null, /*#__PURE__*/React.createElement("center", null, "Welcome to Game Library!")), /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("center", null, "Please Login:")), /*#__PURE__*/React.createElement("label", {
       htmlFor: "username"
     }, "Username: "), /*#__PURE__*/React.createElement("input", {
       id: "user",
@@ -66,7 +66,7 @@ var LoginWindow = function LoginWindow(props) {
       className: "formSubmit",
       type: "submit",
       value: "Sign in"
-    }))
+    }), /*#__PURE__*/React.createElement("p", null), /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("center", null, "Dont have an account? signup!")))
   );
 };
 
@@ -78,7 +78,7 @@ var SignupWindow = function SignupWindow(props) {
       action: "/signup",
       method: "POST",
       className: "mainForm"
-    }, /*#__PURE__*/React.createElement("label", {
+    }, /*#__PURE__*/React.createElement("h1", null, /*#__PURE__*/React.createElement("center", null, "Welcome to Game Library!")), /*#__PURE__*/React.createElement("h3", null, /*#__PURE__*/React.createElement("center", null, "Please Signup Below:")), /*#__PURE__*/React.createElement("label", {
       htmlFor: "username"
     }, "Username: "), /*#__PURE__*/React.createElement("input", {
       id: "user",

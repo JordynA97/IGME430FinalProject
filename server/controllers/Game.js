@@ -11,7 +11,7 @@ const libraryPage = (req, res) => {
             return res.status(400).json({ error: 'An error occured' });
         }
 
-        return res.render('app', { csrfToken: req.csrfToken(), games: docs, premium: req.session.account.premium });
+        return res.render('app', {games: docs, premium: req.session.account.premium });
     });
 };
 
@@ -80,7 +80,12 @@ const reviewPage = (request, response) => {
     });
 }
 
+const pageNotFound = (req, res) => {
+    res.redirect('/');
+}
+
 module.exports.libraryPage = libraryPage;
 module.exports.getGames = getGames;
 module.exports.make = makeGame;
 module.exports.reviewPage = reviewPage;
+module.exports.pageNotFound = pageNotFound;

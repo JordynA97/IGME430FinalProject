@@ -1,13 +1,12 @@
 const handlePassChange = (e) => {
     e.preventDefault();
 
-    //send ajax
     $.ajax({
         cache: false,
         type: 'POST',
-        url: $("#passwordForm").attr("action"),
-        data: $("#passwordForm").serialize(),
-        dataType: "json",
+        url: $('#passwordForm').attr("action"),
+        data: $('#passwordForm').serialize(),
+        dataType: 'json',
         success: redirect,
     });
 };
@@ -27,7 +26,7 @@ const ChangePassForm = (props) => {
             </div>
 
             <div className="newPassSubmit">
-                <input type="submit" value="Change Password"/>
+                <input id="passSubmit" type="submit" value="Change Password"/>
             </div>
 
             <input type="hidden" name="_csrf" value={props.csrf}/>

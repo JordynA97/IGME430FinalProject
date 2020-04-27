@@ -1,14 +1,13 @@
 "use strict";
 
 var handlePassChange = function handlePassChange(e) {
-  e.preventDefault(); //send ajax
-
+  e.preventDefault();
   $.ajax({
     cache: false,
     type: 'POST',
-    url: $("#passwordForm").attr("action"),
-    data: $("#passwordForm").serialize(),
-    dataType: "json",
+    url: $('#passwordForm').attr("action"),
+    data: $('#passwordForm').serialize(),
+    dataType: 'json',
     success: redirect
   });
 }; //create the form for updating users password
@@ -39,6 +38,7 @@ var ChangePassForm = function ChangePassForm(props) {
     })), /*#__PURE__*/React.createElement("div", {
       className: "newPassSubmit"
     }, /*#__PURE__*/React.createElement("input", {
+      id: "passSubmit",
       type: "submit",
       value: "Change Password"
     })), /*#__PURE__*/React.createElement("input", {

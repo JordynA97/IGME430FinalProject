@@ -4,7 +4,7 @@ const UserProfilePage = (props) => {
         <div id="userProfile">
             <h2>Username: {props.username}</h2>
             <h2 id="sub">Subscription: Basic</h2>
-            <h2>Don't want Ads?
+            <h2>Don't want Ads?</h2>
                 <form>
                     <button type="submit" className="profileButtons" onClick=
                     {function(e) {
@@ -14,8 +14,7 @@ const UserProfilePage = (props) => {
                         Upgrade to Premium
                     </button>
                 </form>
-            </h2>
-            <h2><button className="profileButtons"><a href="/password">Change Password</a></button></h2>
+            <h2><button className="profileButtons" onClick={function(e) {window.location.href = "/password"}}><div class="navlink">Change Password</div></button></h2>
         </div>
     );
 };

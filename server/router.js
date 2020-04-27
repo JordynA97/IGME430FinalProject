@@ -38,6 +38,9 @@ const router = (app) => {
 
     //default
     app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
+
+    //404 redirect
+    app.get('/*', controllers.Game.pageNotFound);
 };
 
 module.exports = router;

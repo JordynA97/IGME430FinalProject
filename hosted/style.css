@@ -12,6 +12,7 @@ html, body {
 input{
 border-radius: 12px;
 margin-bottom: 5px;
+font-family: 'Abel', sans-serif;
 }
 
 #logo {
@@ -75,7 +76,7 @@ nav:nth-child(1) {
     height: 2em;
 }
 
-#logoutButton, #profileButton, #reviewButton, #loginButton, #signupButton, .profileButtons{
+#logoutButton, #profileButton, #reviewButton, #loginButton, #signupButton{
     background-color: transparent;
     border: none;
     font-family: 'Abel', sans-serif;
@@ -83,14 +84,20 @@ nav:nth-child(1) {
     color: white;
 }
 
-#logoutButton :hover, #profileButton :hover, #reviewButton :hover, #loginButton :hover, #signupButton :hover, .profileButtons:hover{
-background-color: green;
-}
-
-.profileButtons{
+.profileButtons, #passSubmit{
+    background-color: transparent;
+    border: none;
+    text-decoration: none;
+    font-family: 'Abel', sans-serif;
+    font-size: 18px;
+    color: white;
     border: solid 2px rgb(59, 59, 59);
     border-radius: 12px;
     font-size: 20px;
+}
+
+#logoutButton :hover, #profileButton :hover, #reviewButton :hover, #loginButton :hover, #signupButton :hover, .profileButtons:hover, #passSubmit:hover{
+background-color: green;
 }
 
 .makeGameSubmit, .reviewPostSubmit{
@@ -119,7 +126,7 @@ background-color: green;
     height: 300px;
     width: 350px;
     margin: 0 auto;
-    padding-top: 350px;
+    padding-top: 50px;
     font-size: 1.2em;
 }
 
@@ -170,6 +177,15 @@ background-color: green;
 #user:focus, #pass:focus, #pass2:focus {
     outline: none;
     box-shadow: 0px 0px 1px 1px grey;
+}
+
+#userProfile, #passwordChange .newPassSubmit, .newPassDiv, .newPass2Div{
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2%;
 }
 
 #gameMessage {

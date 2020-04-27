@@ -40,13 +40,18 @@ const LoginWindow = (props) => {
         <form id="loginForm" name="loginForm"
         onSubmit={handleLogin} action="/login"
         method="POST" className="mainForm">
-
+            <h1><center>Welcome to Game Library!</center></h1>
+            <h3><center>Please Login:</center></h3>
+            
             <label htmlFor="username">Username: </label>
             <input id="user" type="text" name="username" placeholder="username"/>
             <label htmlFor="pass">Password: </label>
             <input id="pass" type="password" name="pass" placeholder="password"/>
             <input type="hidden" name="_csrf" value={props.csrf}/>
+            
             <input className="formSubmit" type="submit" value="Sign in"/>
+            <p></p>
+            <h3><center>Dont have an account? Sign up!</center></h3>
 
         </form>
     );
@@ -57,7 +62,8 @@ const SignupWindow = (props) => {
         <form id="signupForm" name="signupForm"
         onSubmit={handleSignup} action="/signup"
         method="POST" className="mainForm">
-
+            <h1><center>Welcome to Game Library!</center></h1>
+            <h3><center>Please Signup Below:</center></h3>
             <label htmlFor="username">Username: </label>
             <input id="user" type="text" name="username" placeholder="username"/>
             <label htmlFor="pass">Password: </label>

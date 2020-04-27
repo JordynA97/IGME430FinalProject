@@ -6,17 +6,20 @@ var UserProfilePage = function UserProfilePage(props) {
       id: "userProfile"
     }, /*#__PURE__*/React.createElement("h2", null, "Username: ", props.username), /*#__PURE__*/React.createElement("h2", {
       id: "sub"
-    }, "Subscription: Basic"), /*#__PURE__*/React.createElement("h2", null, "Don't want Ads?", /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("button", {
+    }, "Subscription: Basic"), /*#__PURE__*/React.createElement("h2", null, "Don't want Ads?"), /*#__PURE__*/React.createElement("form", null, /*#__PURE__*/React.createElement("button", {
       type: "submit",
       className: "profileButtons",
       onClick: function onClick(e) {
         e.preventDefault();
         document.getElementById("sub").innerHTML = "Subscripton: Premium";
       }
-    }, "Upgrade to Premium"))), /*#__PURE__*/React.createElement("h2", null, /*#__PURE__*/React.createElement("button", {
-      className: "profileButtons"
-    }, /*#__PURE__*/React.createElement("a", {
-      href: "/password"
+    }, "Upgrade to Premium")), /*#__PURE__*/React.createElement("h2", null, /*#__PURE__*/React.createElement("button", {
+      className: "profileButtons",
+      onClick: function onClick(e) {
+        window.location.href = "/password";
+      }
+    }, /*#__PURE__*/React.createElement("div", {
+      "class": "navlink"
     }, "Change Password"))))
   );
 }; //place in profile.handlebars
